@@ -58,6 +58,10 @@ class APIKey(models.Model):
             return False
         return True
     
+    def can_make_request(self):
+        """Check if the API key can make a request (alias for is_valid)."""
+        return self.is_valid()
+    
     def increment_usage(self, tokens):
         self.tokens_used += tokens
         self.requests_sent += 1

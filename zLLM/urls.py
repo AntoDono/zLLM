@@ -16,7 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from api import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    # OpenAI-compatible endpoints
+    path('v1/chat/completions', views.chat_completions, name='chat_completions'),
+    path('v1/models', views.models_list, name='models_list'),
 ]
